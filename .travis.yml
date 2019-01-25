@@ -33,4 +33,4 @@ before_install:
 
 script:
   - ./buckaroo-client install
-  - buck build -c ui.superconsole=DISABLED //src/liblzma/:lzma
+  - buck build -c ui.superconsole=DISABLED //src/liblzma:lzma

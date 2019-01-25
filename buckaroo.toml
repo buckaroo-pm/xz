@@ -1,1 +1,1 @@
-targets = [ "//src/liblzma/:lzma" ]
+targets = [ "//src/liblzma:lzma" ]
