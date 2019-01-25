@@ -1,0 +1,49 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+linux_srcs = [
+  'simple/x86.c',
+]
+
+macos_srcs = [
+  'simple/x86.c',
+]
+
+cxx_library(
+  name = 'lzma',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('api', '**/*.h'),
+  ]),
+  headers = subdir_glob([
+    ('common', '**/*.h'),
+    ('src/common', '**/*.h'),
+    ('lz', '**/*.h'),
+    ('lzma', '**/*.h'),
+    ('simple', '**/*.h'),
+    ('delta', '**/*.h'),
+    ('check', '**/*.h'),
+    ('rangecoder', '**/*.h'),
+  ]),
+  srcs = glob([
+    'common/*.c',
+    'lz/*.c',
+    'lzma/*.c',
+    'check/sha256.c',
+    'check/check.c',
+    'check/crc32_fast.c',
+    'simple/simple_coder.c',
+    'simple/simple_decoder.c',
+    'simple/simple_encoder.c',
+    'rangecoder/*.c',
+  ]),
+  platform_srcs = [
+    ('linux.*', linux_srcs),
+    ('macos.*', macos_srcs),
+  ],
+  deps = [
+    '//src/common:common',
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)

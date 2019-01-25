@@ -1,0 +1,12 @@
+cxx_binary(
+  name = 'check',
+  headers = [
+    'tests.h',
+  ],
+  srcs = [
+    'test_check.c',
+  ],
+  deps = [
+    '//src/liblzma/:lzma',
+  ],
+)

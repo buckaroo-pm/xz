@@ -1,0 +1,21 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+cxx_library(
+  name = 'common',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('', '**/*.h'),
+  ]),
+  # headers = subdir_glob([
+  #   ('common', '**/*.h'),
+  #   ('src/common', '**/*.h'),
+  #   ('lz', '**/*.h'),
+  #   ('lzma', '**/*.h'),
+  # ]),
+  srcs = glob([
+    '*.c',
+  ]),
+  visibility = [
+    'PUBLIC',
+  ],
+)

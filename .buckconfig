@@ -1,0 +1,12 @@
+[project]
+  ignore = .git
+
+[parser]
+  default_build_file_syntax = SKYLARK
+
+[cxx]
+  should_remap_host_platform = true
+
+[cxx#linux-x86_64]
+  should_remap_host_platform = true
+  cflags = -DHAVE_STDBOOL_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_LIMITS_H=1 -DMYTHREAD_POSIX=1 -DHAVE_STRING_H=1
